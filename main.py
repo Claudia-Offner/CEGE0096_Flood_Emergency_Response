@@ -12,7 +12,6 @@ import rasterio.transform
 import geopandas as gpd
 import numpy as np
 
-
 # Add extra functions here
 # https://automating-gis-processes.github.io/CSC18/lessons/L6/clipping-raster.html Time of access: 19/12/2020
 def getfeatures(gdf):
@@ -36,7 +35,8 @@ def main():
     # Get MBR
     mbr_res = el_mbr.contains(user_p)
     print(mbr_res)
-
+    
+    
     # Task 2: Highest Point Identification
     crs = CRS.from_epsg(27700)
     location = Point(x1, y1)
@@ -54,6 +54,7 @@ def main():
     # print(elev_mask[0][highest_point_place])
     highest_point = Point(location.x - 5002.5 + highest_point_place[1][0] * 5, location.y + 5002.5 - highest_point_place[0][0] * 5)
     print("The highest point's coordinates are: " + 'x=' + str(highest_point.x) + ', ' + 'y=' + str(highest_point.y))
+    
     # Task 3: Nearest Integrated Transport Network (ITN)
 
     # Task 4: Shortest Path

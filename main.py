@@ -1,9 +1,14 @@
 # This file is where Assignment 2 tasks will be solved.
 
 # Import necessary packages here
+import geopandas as gpd
 from shapely.geometry import Point, Polygon
 
 # Add extra functions here
+
+# Read files here
+isle = gpd.read_file('shape/isle_of_wight.shp')
+
 
 def main():
     """ Flood Emergency Planning """
@@ -30,6 +35,20 @@ def main():
     # Task 5: Map Plotting
 
     # Task 6: Extend the Region
+
+    # Extract island polygons to list
+    isl_poly = []
+    for i in isle['geometry']:
+        for poly in i:
+            isl_poly.append(poly)
+    print(isl_poly)
+    # Check if user input is within polygons OR on border
+    for i in isl_poly:
+        print(i.contains(user_p))
+    for i in isl_poly:
+        print(i.touches(user_p))
+    # Check highest point across polygons
+
 
 if __name__ == '__main__':
     main()

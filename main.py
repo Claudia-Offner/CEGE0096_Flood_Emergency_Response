@@ -56,7 +56,27 @@ def main():
     print("The highest point's coordinates are: " + 'x=' + str(highest_point.x) + ', ' + 'y=' + str(highest_point.y))
     
     # Task 3: Nearest Integrated Transport Network (ITN)
-
+    #identify nearest nodes to person
+    with open('itn/solent_itn.json') as f:
+        data = json.load(f)
+    nodes = []
+    for feature in data['roadnodes']:
+        nodes.append(data['roadnodes'][feature]['coords'])
+    node_idx = index.Index()
+    for i, node in enumerate(nodes):
+        node_idx.insert(i, node, str(i))
+    person_closest = []
+    for i in node_idx.nearest((x1,y1), num_results=1, objects=True):
+        person_closest.append(i.id)
+        person_closest.append(i.bounds[0])
+        person_closest.append(i.bounds[2])
+    print('the closest point to user is:', person_closest)
+    highest_closest = []
+    for i in node_idx.nearest((highest_point.x,highest_point.y), num_results=1, objects=True):
+        highest_closest.append(i.id)
+        highest_closest.append(i.bounds[0])
+        highest_closest.append(i.bounds[2])
+    print('the closest point to highest point is:', highest_closest)
     # Task 4: Shortest Path
 
     # Task 5: Map Plotting

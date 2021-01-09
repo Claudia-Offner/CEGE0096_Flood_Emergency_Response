@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3a572e5c-f9a4-453c-a10e-c6a093fc350f" name="Default Changelist" comment="Delete .idea folder">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="e6b56c7a-56ae-4fe8-9b59-8c0607f14720" />
+  <component name="ProjectId" id="1mbESbuWwborSGOVshquKFwe8Mo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Assignmet_1" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Assignment_2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\offne\.conda\envs\geospatial2\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3a572e5c-f9a4-453c-a10e-c6a093fc350f" name="Default Changelist" comment="" />
+      <created>1609753890258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609753890258</updated>
+      <workItem from="1609753891305" duration="3822000" />
+      <workItem from="1609761211010" duration="893000" />
+      <workItem from="1610018852654" duration="892000" />
+      <workItem from="1610112394843" duration="4381000" />
+      <workItem from="1610193806219" duration="918000" />
+      <workItem from="1610196043029" duration="304000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added project configuration files">
+      <created>1609754782150</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609754782150</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Pulled task 2 from origin.">
+      <created>1610112517648</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610112517648</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added JSON to GDF feature for task 4">
+      <created>1610112729352</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610112729352</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Delete .idea folder">
+      <created>1610127998967</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610127998967</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Delete .idea folder">
+      <created>1610128243357</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610128243357</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added project configuration files" />
+    <MESSAGE value="Pulled task 2 from origin." />
+    <MESSAGE value="Added JSON to GDF feature for task 4" />
+    <MESSAGE value="Delete .idea folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete .idea folder" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609757384723">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1609757384723" />
+    <state x="3740" y="262" key="FileChooserDialogImpl" timestamp="1609757415212">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3740" y="262" key="FileChooserDialogImpl/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1609757415212" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1610137903319">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1610137903319">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1610137903319">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1610137903319">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
+    <state x="3552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1610128270777">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3552" y="253" key="Vcs.Push.Dialog.v2/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610128270777" />
+    <state x="3777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610112402094">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610112402094" />
+    <state x="3729" y="421" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1609753976261">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3729" y="421" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1609753976261" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Assignment_2$main.coverage" NAME="main Coverage Results" MODIFIED="1610112687409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

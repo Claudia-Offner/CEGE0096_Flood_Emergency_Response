@@ -60,36 +60,58 @@ def main():
     
     # Task 3: Nearest Integrated Transport Network (ITN)
     #identify nearest nodes to person
-    with open('itn/solent_itn.json') as f:
+    with open('Material/itn/solent_itn.json') as f:
         data = json.load(f)
-    nodes = []
-    for feature in data['roadnodes']:
-        nodes.append(data['roadnodes'][feature]['coords'])
     node_idx = index.Index()
-    for i, node in enumerate(nodes):
-        node_idx.insert(i, node, str(i))
-    person_closest = []
-    for i in node_idx.nearest((x1,y1), num_results=1, objects=True):
-        person_closest.append(i.id)
-        person_closest.append(i.bounds[0])
-        person_closest.append(i.bounds[2])
+    nodes = data['roadnodes']
+    for i, (idx, coord) in enumerate(nodes.items()):
+        x,y = coord['coords']
+        point = Point(x,y)
+        if location_buf.contains(point):
+            node_idx.insert(i,[x,y,x,y],idx)
+    start = list(node_idx.nearest((x1, y1, x1, y1), 1, objects=True))[0]
+    end = list(node_idx.nearest((highest_point.x, highest_point.y, highest_point.x, highest_point.y), 1, objects=True))[0]
+    person_closest = start.object
+    highest_closest = end.object
+    
     print('the closest point to user is:', person_closest)
-    highest_closest = []
-    for i in node_idx.nearest((highest_point.x,highest_point.y), num_results=1, objects=True):
-        highest_closest.append(i.id)
-        highest_closest.append(i.bounds[0])
-        highest_closest.append(i.bounds[2])
     print('the closest point to highest point is:', highest_closest)
-    #identify nearest nodes to highest point
-    print(len(nodes))
     
     # Task 4: Shortest Path
     #find shortest path between nearest person point and nearest highest point
+    elevation = rasterio.open('Material/elevation/SZ.asc')
+    heights = elevation.read(1)
+    spd = float(5000 / 60)
+    road_links = data['roadlinks']
     Graph = nx.Graph()
-    roadlinks = data['roadlinks']
-    for l in roadlinks:
-        Graph.add_edge(roadlinks[l]['start'], roadlinks[l]['end'],fid=l, weight = roadlinks[l]['length'])
-    path = nx.dijkstra_path(Graph,(person_closest[1], person_closest[2]),(highest_closest[1],highest_closest[2]), weight='weight')
+    for l in road_links:
+        elevation_time = 0
+        full_coords = road_links[l]['coords']
+        point_start = Point(tuple(road_links[l]['coords'][0]))
+        for p in full_coords:
+            point_end = Point(tuple(p))
+            start_r, start_l = elevation.index(point_start.x, point_start.y)
+            end_r, end_l = elevation.index(point_end.x, point_end.y)
+            d_ele = heights[int(end_r), int(end_l)] - heights[int(start_r),int(start_l)]
+            if d_ele > 0:
+                elevation_time = float(d_ele/10) + elevation_time
+            point_start = point_end
+        time = elevation_time + road_links[l]['length'] / spd
+        Graph.add_edge(road_links[l]['start'],road_links[l]['end'], fid=l, weight=time)
+        point_start_reversed = Point(tuple(road_links[l]['coords'][-1]))
+        for p in reversed(full_coords):
+            point_end = Point(tuple(p))
+            start_r, start_l = elevation.index(point_start_reversed.x, point_start_reversed.y)
+            end_r, end_l = elevation.index(point_end.x, point_end.y)
+            d_ele = heights[int(end_r), int(end_l)] - heights[int(start_r),int(start_l)]
+            if d_ele > 0:
+                elevation_time = float(d_ele/10) + elevation_time
+            point_start_reversed = point_end
+        time = elevation_time + road_links[l]['length'] / spd
+        Graph.add_edge(road_links[l]['start'],road_links[l]['end'], fid=l, weight=time)
+    path = nx.dijkstra_path(Graph, person_closest, highest_closest, weight="weight")
+    print(path)
+    print("the shortest path between ")
     # Task 5: Map Plotting
 
     # Task 6: Extend the Region

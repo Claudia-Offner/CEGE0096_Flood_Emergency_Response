@@ -20,7 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a572e5c-f9a4-453c-a10e-c6a093fc350f" name="Default Changelist" comment="Delete .idea folder">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itn.py" beforeDir="false" afterPath="$PROJECT_DIR$/itn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/reader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +41,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Assignmet_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
@@ -79,7 +84,7 @@
       <workItem from="1610018852654" duration="892000" />
       <workItem from="1610112394843" duration="4381000" />
       <workItem from="1610193806219" duration="918000" />
-      <workItem from="1610196043029" duration="304000" />
+      <workItem from="1610196043029" duration="13226000" />
     </task>
     <task id="LOCAL-00001" summary="Added project configuration files">
       <created>1609754782150</created>
@@ -142,30 +147,50 @@
     <option name="LAST_COMMIT_MESSAGE" value="Delete .idea folder" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="3414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609757384723">
+    <state x="3414" y="175" width="1092" height="858" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610204130666">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
-    <state x="3414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1609757384723" />
-    <state x="3740" y="262" key="FileChooserDialogImpl" timestamp="1609757415212">
+    <state x="3414" y="175" width="1092" height="858" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610204130666" />
+    <state x="3729" y="373" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1610207012691">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
-    <state x="3740" y="262" key="FileChooserDialogImpl/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1609757415212" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1610137903319">
+    <state x="3729" y="373" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610207012691" />
+    <state x="3740" y="262" key="FileChooserDialogImpl" timestamp="1610204129799">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1610137903319">
+    <state x="3740" y="262" key="FileChooserDialogImpl/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610204129799" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1610209981843">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1610137903319">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610209981843" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1610209981843">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1610137903319">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610209981843" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1610209981842">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610137903319" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610209981842" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1610209981843">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610209981843" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1610204364800">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610204364800" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1610204364799">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610204364799" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1610204364799">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610204364799" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1610204364799">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1610204364799" />
     <state x="3552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1610128270777">
       <screen x="3000" y="0" width="1920" height="1040" />
     </state>
@@ -179,18 +204,8 @@
     </state>
     <state x="3729" y="421" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1609753976261" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Assignment_2$main.coverage" NAME="main Coverage Results" MODIFIED="1610112687409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Assignment_2$reader.coverage" NAME="main Coverage Results" MODIFIED="1610209981834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

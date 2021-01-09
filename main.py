@@ -11,6 +11,9 @@ import rasterio.crs
 import rasterio.transform
 import geopandas as gpd
 import numpy as np
+import json
+from rtree import index
+import networkx as nx
 
 # Add extra functions here
 # https://automating-gis-processes.github.io/CSC18/lessons/L6/clipping-raster.html Time of access: 19/12/2020
@@ -77,8 +80,16 @@ def main():
         highest_closest.append(i.bounds[0])
         highest_closest.append(i.bounds[2])
     print('the closest point to highest point is:', highest_closest)
+    #identify nearest nodes to highest point
+    print(len(nodes))
+    
     # Task 4: Shortest Path
-
+    #find shortest path between nearest person point and nearest highest point
+    Graph = nx.Graph()
+    roadlinks = data['roadlinks']
+    for l in roadlinks:
+        Graph.add_edge(roadlinks[l]['start'], roadlinks[l]['end'],fid=l, weight = roadlinks[l]['length'])
+    path = nx.dijkstra_path(Graph,(person_closest[1], person_closest[2]),(highest_closest[1],highest_closest[2]), weight='weight')
     # Task 5: Map Plotting
 
     # Task 6: Extend the Region

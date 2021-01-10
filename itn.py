@@ -52,29 +52,29 @@ class Networker:
         end_node = [loc2_fid, loc2_coords]
         return start_node, end_node
 
-    def dijkstra_path(self, start_node, end_node):
+    def dijkstra_path(self):
         """ Extracts shortest path between start and end nodes """
 
         json = self.json
 
         # Create Graph
-        g = nx.Graph()
+        Graph = nx.Graph()
         for link in json:
             start = json[link]['start']
             end = json[link]['end']
             fid = link
             weight = json[link]['length']
-            g.add_edge(start, end, fid=fid, weight=weight)
+            Graph.add_edge(start, end, fid=fid, weight=weight)
 
         # Extract path
-        path = nx.dijkstra_path(g, source=start_node, target=end_node, weight='weight')
+        path = nx.dijkstra_path(Graph, source=self.start, target=self.end, weight='weight')
 
         # Parse path to a GeoDataFrame
         links = []
         geom = []
         first_node = path[0]
         for node in path[1:]:
-            link_fid = g.edges[first_node, node]['fid']
+            link_fid = Graph.edges[first_node, node]['fid']
             links.append(link_fid)
             geom.append(LineString(json[link_fid]['coords']))
             first_node = node
@@ -82,12 +82,11 @@ class Networker:
 
         return shortest_path_gpd
 
-    def naismiths_path(self, elevation, start_node, end_node):
-        """ Extracts naismiths path between start and end nodes """
-        ### Needs more comments #####
+    def naismiths_path(self, elevation):
+        """ Extracts fastest path between start and end nodes using Naismiths algorithm """
 
-        heights = elevation.read(1)
-        spd = float(5000 / 60)
+        heights = elevation.read(1) # load elevation as an array
+        speed = float(5000 / 60) # set speed to 5km a minute
         road_links = self.json
 
         # Create Graph
@@ -106,7 +105,7 @@ class Networker:
                 if d_ele > 0:
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start = point_end
-            time = elevation_time + road_links[l]['length'] / spd
+            time = elevation_time + road_links[l]['length'] / speed
             Graph.add_edge(road_links[l]['start'], road_links[l]['end'], fid=l, weight=time)
 
             # Reversed
@@ -119,11 +118,11 @@ class Networker:
                 if d_ele > 0:
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start_reversed = point_end
-            time = elevation_time + road_links[l]['length'] / spd
+            time = elevation_time + road_links[l]['length'] / speed
             Graph.add_edge(road_links[l]['start'], road_links[l]['end'], fid=l, weight=time)
 
         # Extract path
-        path = nx.dijkstra_path(Graph, start_node, end_node, weight="weight")
+        path = nx.dijkstra_path(Graph, self.start, self.end, weight="weight")
 
         # Parse path to a GeoDataFrame
         links = []

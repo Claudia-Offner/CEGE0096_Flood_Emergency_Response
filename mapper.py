@@ -57,6 +57,10 @@ class Mapper:
         mycmap = plt.get_cmap('viridis')
         # Values under clim will be set to totally transparent
         mycmap.set_under('k', alpha=0)
+        # Set limits of plotting extent
+        plt.xlim([user_x - 10000, user_x + 10000])
+        plt.ylim([user_y - 10000, user_y + 10000])
+        # Show plot
         rasterio.plot.show(elev_mask, transform=mask_transform, alpha=0.5, cmap=mycmap, clim=0)  ### Remove mask edges somehow
 
 

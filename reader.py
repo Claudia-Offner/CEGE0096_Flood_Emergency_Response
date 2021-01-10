@@ -73,7 +73,7 @@ class Reader:
         buff_gdf = gpd.GeoDataFrame({'geometry': buff}, index=[0], crs=crs)
         buff_coords = gdf_to_json(buff_gdf)
 
-        # Extract raster values with mask
+        # Extract raster values with mask, no data set to -10
         with rasterio.open(data) as elev:
-            elev_mask, mask_transform = rasterio.mask.mask(elev, shapes=buff_coords, crop=True)
+            elev_mask, mask_transform = rasterio.mask.mask(elev, shapes=buff_coords, crop=True, nodata=-10)
         return [elev_mask, mask_transform]

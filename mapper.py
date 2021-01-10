@@ -53,6 +53,10 @@ class Mapper:
         plt.axis('off')
 
         # Add raster mask
-        rasterio.plot.show(elev_mask, transform=mask_transform, alpha=0.5)  ### Remove mask edges somehow
+        # Set cmap
+        mycmap = plt.get_cmap('viridis')
+        # Values under clim will be set to totally transparent
+        mycmap.set_under('k', alpha=0)
+        rasterio.plot.show(elev_mask, transform=mask_transform, alpha=0.5, cmap=mycmap, clim=0)  ### Remove mask edges somehow
 
 

@@ -14,6 +14,7 @@ import rasterio.transform
 from shapely.geometry import Point, Polygon, MultiPolygon, LineString
 import numpy as np
 
+
 def get_json(path):
     """ Function for loading JSON files """
     with open(path, "r") as f:
@@ -30,6 +31,7 @@ def main():
     data = Reader('materials/shape/isle_of_wight.shp')
     # location_p = data.get_input()
     # print('User Location: ', location_p)
+
     location_p = Point(439619, 85800)
     print('User Location: ', location_p)
 
@@ -42,8 +44,7 @@ def main():
     highest_point_value = np.max(elev_mask)
     highest_point_place = np.where(elev_mask[0] == highest_point_value)
 
-    # Convert pixel coordinates to meters (multiplying by 5)
-    # Add/subtract 5km  from location point - 2.5 meters are added to account for pixel centroids.
+    # Convert pixel coordinates to meters (multiplying by 5 - 2.5 meters are added to account for pixel centroids)
     highest_p = Point(location_p.x - 5002.5 + highest_point_place[1][0] * 5,
                       location_p.y + 5002.5 - highest_point_place[0][0] * 5)
     print('Highest Location in 5km:  ', highest_p)
@@ -68,22 +69,23 @@ def main():
     itn_links = Networker(start_node[0], end_node[0], links)
 
     # Extract paths as GeoDataFrames
-    dijkstra = itn_links.dijkstra_path()
-    print('Dijkstra Path: ', dijkstra)
-    naismiths = itn_links.naismiths_path(elevation)
-    print('Naismiths Path: ', naismiths)
+    shortest = itn_links.shortest_path()
+    print('Shortest Path: ', shortest)
+    fastest = itn_links.fastest_path(elevation)
+    print('Fastest Path: ', fastest)
 
     # Task 5: Map Plotting
 
-    # Extract elevation mask for mapping - outputs TIF file
+    # Extract elevation mask as TIF file for mapping
     data.get_raster(elevation, elev_mask, mask_transform)
 
     # Plot extracted features to a basemap
     m = Mapper('materials/background/raster-50k_2724246.tif')
     user_region = str(os.path.join('output.tif'))
-    m.plot_map(user_region, location_p, highest_p, start_p, end_p, dijkstra, naismiths)
+    m.plot_map(user_region, location_p, highest_p, start_p, end_p, shortest, fastest)
 
     # Task 6: Extend the Region
+
 
 if __name__ == '__main__':
     main()

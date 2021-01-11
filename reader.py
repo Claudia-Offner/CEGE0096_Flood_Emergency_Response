@@ -12,6 +12,7 @@ from rasterio.mask import mask
 from pyproj import CRS
 from shapely.geometry import Point, Polygon, MultiPolygon, LineString
 
+
 def gdf_to_json(gdf):
     """ Parses a GeoDataFrame to JSON format """
     return [json.loads(gdf.to_json())['features'][0]['geometry']]
@@ -47,7 +48,7 @@ class Reader:
 
                 # Check if user is in range
                 mbr_res = el_mbr.contains(location)
-                if mbr_res == True:
+                if mbr_res is True:
                     # Check if user is on the island
                     boundary = self.get_boundary()
                     res = []
@@ -79,7 +80,7 @@ class Reader:
         with rasterio.open(data) as elev:
             elev_mask, mask_transform = rasterio.mask.mask(elev, shapes=buff_coords, crop=True, nodata=-1)
 
-        return [elev_mask, mask_transform] # returns as an array
+        return [elev_mask, mask_transform]  # returns as an array
 
     def get_raster(self, elevation, mask, trans):
 

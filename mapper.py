@@ -13,7 +13,6 @@ from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
 import matplotlib.font_manager as fm
 
 
-
 class Mapper:
     """ Mapper Class """
 
@@ -61,8 +60,8 @@ class Mapper:
         plt.plot(highest.x, highest.y, 'go', markersize=2, label='Highest point')  # highest location Point
         plt.plot(start.x, start.y, 'b+', markersize=3, label='Starting point')  # starting Point
         plt.plot(end.x, end.y, 'g+', markersize=3, label='Ending point')  # ending Point
-        short_path.plot(ax=ax, edgecolor='blue', linewidth=0.5, zorder=2)  # shortest path LineStrings
-        fast_path.plot(ax=ax, edgecolor='red', linewidth=0.5, zorder=2)  # fastest path LineStrings
+        short_path.plot(ax=ax, edgecolor='blue', linewidth=0.5, zorder=2, label='Shortest path')  # shortest path
+        fast_path.plot(ax=ax, edgecolor='red', linewidth=0.5, zorder=2, label='Fastest path')  # fastest path
 
         # Plot features
         plt.title('Flood Emergency Planning Map', fontsize=8)
@@ -83,7 +82,5 @@ class Mapper:
         cx = fig.add_axes([0.91, 0.2, 0.02, 0.6])
         cb = plt.colorbar(img, cax=cx)
         cb.ax.tick_params(labelsize=3)
-        plt.show()
 
-
-
+        return plt.show()

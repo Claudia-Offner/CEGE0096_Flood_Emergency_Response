@@ -1,11 +1,9 @@
 # File for developing Assignment 2 tasks.
 
-# Import modules here
+# Import packages here
 from reader import Reader, Clipper
 from itn import Networker
 from mapper import Mapper
-
-# Import packages here
 import os
 import json
 import rasterio
@@ -29,9 +27,10 @@ def main():
     print('Please provide your location as a British National Grid coordinate: ')
     # Extract user input as Point
     data = Reader('materials/shape/isle_of_wight.shp')
-    # location_p = data.get_input()
-    location_p = Point(439619, 85800)
+    location_p = data.get_input()
+    # location_p = Point(439619, 85800)  # Test point
     print('User Location: ', location_p)
+
 
 
     # TASK 2: HIGHEST POINT IDENTIFICATION
@@ -49,6 +48,8 @@ def main():
                       location_p.y + 5002.5 - highest_point_place[0][0] * 5)
     print('Highest Location in 5km:  ', highest_p)
 
+
+
     # TASK 3: NEAREST ITN
 
     # Load road nodes from JSON file and set the location and highest Points
@@ -61,6 +62,8 @@ def main():
     end_p = Point(end_node[1][0], end_node[1][1])
     print('Start and end nodes: ', start_p, end_p)
 
+
+
     # TASK 4: SHORTEST PATH
 
     # Load elevation, road links and start and end node Points
@@ -69,10 +72,12 @@ def main():
     itn_links = Networker(start_node[0], end_node[0], links)
 
     # Extract paths as GeoDataFrames
-    # shortest = itn_links.shortest_path()
-    # print('Shortest Path: ', shortest)
+    shortest = itn_links.shortest_path()
+    print('Shortest Path: ', shortest)
     fastest = itn_links.fastest_path(elevation)
     print('Fastest Path: ', fastest)
+
+
 
     # Task 5: Map Plotting
 
@@ -84,8 +89,10 @@ def main():
     user_region = str(os.path.join('output.tif'))
     m.plot_map(user_region, location_p, highest_p, start_p, end_p, shortest, fastest)
 
-    # Task 6: Extend the Region
 
+
+    # Task 6: Extend the Region
+    # See reader.py
 
 if __name__ == '__main__':
     main()

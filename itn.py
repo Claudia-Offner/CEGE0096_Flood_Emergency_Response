@@ -1,4 +1,4 @@
-# File for developing OOP for network analysis
+# File for developing OOP for network analysis.
 
 # Import packages here
 import geopandas as gpd
@@ -89,7 +89,7 @@ class Networker:
         road_links = self.json
 
         # Create Graph
-        g = nx.DiGraph()
+        g = nx.Graph()
         for link in road_links:
             start = road_links[link]['start']
             end = road_links[link]['end']
@@ -97,27 +97,27 @@ class Networker:
             length = road_links[link]['length']
             elevation_time = 0
 
-            # Forward
+            # Forward direction of link
             point_start = Point(tuple(coords[0]))
             for p in coords:
                 point_end = Point(tuple(p))
                 start_r, start_c = elevation.index(point_start.x, point_start.y)
                 end_r, end_c = elevation.index(point_end.x, point_end.y)
                 d_ele = heights[int(end_r), int(end_c)] - heights[int(start_r), int(start_c)]
-                if d_ele > 0:  # Weight the link ascent/descent
+                if d_ele > 0:  # Adjust the time if the point ascends
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start = point_end
             time = elevation_time + length / speed
             g.add_edge(start, end, fid=link, weight=time)
 
-            # Reversed
+            # Reversed direction of link
             point_start_reversed = Point(tuple(coords[-1]))
             for p in reversed(coords):
                 point_end = Point(tuple(p))
                 start_r, start_c = elevation.index(point_start_reversed.x, point_start_reversed.y)
                 end_r, end_c = elevation.index(point_end.x, point_end.y)
                 d_ele = heights[int(end_r), int(end_c)] - heights[int(start_r), int(start_c)]
-                if d_ele > 0: # Weight the link ascent/descent
+                if d_ele > 0: # Adjust the time if the point ascends
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start_reversed = point_end
             time = elevation_time + length / speed

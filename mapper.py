@@ -1,4 +1,4 @@
-# This file is where mapping and plotting code will be developed
+# File for developing OOP for mapping.
 
 # Import packages here
 import os
@@ -59,8 +59,8 @@ class Mapper:
         plt.plot(highest.x, highest.y, 'go', markersize=2, label='Highest point')  # highest location Point
         plt.plot(start.x, start.y, 'b+', markersize=3, label='Starting point')  # starting Point
         plt.plot(end.x, end.y, 'g+', markersize=3, label='Ending point')  # ending Point
-        short_path.plot(ax=ax, edgecolor='blue', linewidth=0.5, zorder=2, label='Shortest path')  # shortest path
         fast_path.plot(ax=ax, edgecolor='red', linewidth=0.5, zorder=2, label='Fastest path')  # fastest path
+        short_path.plot(ax=ax, edgecolor='blue', linewidth=0.5, zorder=2, label='Shortest path')  # shortest path
 
         # Plot features
         # Scale

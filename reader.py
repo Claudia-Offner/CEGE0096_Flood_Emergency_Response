@@ -1,4 +1,4 @@
-# File for developing OOP that will read analysis inputs
+# File for developing OOP that will read/clip inputs for analysis.
 
 # Import packages here
 import json

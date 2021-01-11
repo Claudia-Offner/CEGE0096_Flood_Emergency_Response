@@ -24,6 +24,7 @@ def main():
     """ Flood Emergency Planning """
 
     # TASK 1: USER INPUT
+
     print('Please provide your location as a British National Grid coordinate: ')
     # Extract user input as Point
     data = Reader('materials/shape/isle_of_wight.shp')

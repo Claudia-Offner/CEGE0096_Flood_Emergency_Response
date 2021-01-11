@@ -65,7 +65,7 @@ class Mapper:
         # Plot features
         # Scale
         fontprops = fm.FontProperties(size=8)
-        scalebar = AnchoredSizeBar(ax.transData, 2000, '1 km', 'lower left', pad=0.15, color='black',
+        scalebar = AnchoredSizeBar(ax.transData, 2000, '2 km', 'lower left', pad=0.15, color='black',
                                    frameon=False, size_vertical=1, fontproperties=fontprops)
         ax.add_artist(scalebar)
         # North Arrow

@@ -1,14 +1,12 @@
 # File for developing OOP that will read analysis inputs
 
 # Import packages here
-import os
 import json
-import numpy as np
 import geopandas as gpd
 import rasterio
 import rasterio.crs
 import rasterio.transform
-from rasterio.mask import mask
+import rasterio.mask
 from pyproj import CRS
 from shapely.geometry import Point, Polygon, MultiPolygon, LineString
 
@@ -66,9 +64,17 @@ class Reader:
                 print('Invalid data type')
                 return Reader.get_input(self)
 
-    def get_mask(self, location, data):
-        """ Retrieves raster data around user input; outputs as a 5km mask """
+class Clipper:
+    """ Clipper Class """
 
+    def __init__(self, location, data):
+        self.location = location
+        self.data = data
+
+    def get_mask(self):
+        """ Retrieves raster data around user input and outputs a 5km mask """
+        location = self.location
+        data = self.data
         crs = CRS.from_epsg(27700)  # set CRS to BNS
         buff = location.buffer(5000)  # create 5km radius buffer
 
@@ -82,14 +88,20 @@ class Reader:
 
         return [elev_mask, mask_transform]  # returns as an array
 
-    def get_raster(self, elevation, mask, trans):
+    def get_raster(self):
+        """ Outputs array datasets as raster file """
+
+        elevation =  rasterio.open(self.data)
+        region = self.get_mask()
+        mask = region[0]
+        trans = region[1]
 
         # Load meta data
         meta_data = elevation.meta.copy()
         meta_data.update(
-            {"driver": "GTiff", "height": mask.shape[1], "width": mask.shape[2],
-                "transform": trans,
-                "crs": CRS.from_epsg(27700).to_proj4()})
+            {'driver': 'GTiff', 'height': mask.shape[1], 'width': mask.shape[2],
+                'transform': trans,
+                'crs': CRS.from_epsg(27700).to_proj4()})
 
         # Write file
         with rasterio.open('output.tif', 'w', **meta_data) as dest:

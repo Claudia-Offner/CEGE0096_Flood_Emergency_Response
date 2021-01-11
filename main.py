@@ -1,7 +1,7 @@
 # File for developing Assignment 2 tasks.
 
 # Import modules here
-from reader import Reader
+from reader import Reader, Clipper
 from itn import Networker
 from mapper import Mapper
 
@@ -30,15 +30,15 @@ def main():
     # Extract user input as Point
     data = Reader('materials/shape/isle_of_wight.shp')
     # location_p = data.get_input()
-    # print('User Location: ', location_p)
-
     location_p = Point(439619, 85800)
     print('User Location: ', location_p)
 
+
     # TASK 2: HIGHEST POINT IDENTIFICATION
 
+    clip = Clipper(location_p, 'materials/elevation/SZ.asc')
     # Clip elevation raster to 5km buffer as an array and save to file
-    elev_mask, mask_transform = data.get_mask(location_p, 'materials/elevation/SZ.asc')
+    elev_mask, mask_transform = clip.get_mask()
 
     # Extract highest point and identify coordinates
     highest_point_value = np.max(elev_mask)
@@ -69,15 +69,15 @@ def main():
     itn_links = Networker(start_node[0], end_node[0], links)
 
     # Extract paths as GeoDataFrames
-    shortest = itn_links.shortest_path()
-    print('Shortest Path: ', shortest)
+    # shortest = itn_links.shortest_path()
+    # print('Shortest Path: ', shortest)
     fastest = itn_links.fastest_path(elevation)
     print('Fastest Path: ', fastest)
 
     # Task 5: Map Plotting
 
     # Extract elevation mask as TIF file for mapping
-    data.get_raster(elevation, elev_mask, mask_transform)
+    clip.get_raster()
 
     # Plot extracted features to a basemap
     m = Mapper('materials/background/raster-50k_2724246.tif')

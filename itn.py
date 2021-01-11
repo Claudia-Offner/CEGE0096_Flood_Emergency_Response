@@ -2,7 +2,6 @@
 
 # Import packages here
 import geopandas as gpd
-import rasterio
 from shapely.geometry import Point, Polygon, MultiPolygon, LineString
 from shapely.geometry import Point
 import networkx as nx
@@ -53,7 +52,7 @@ class Networker:
         return start_node, end_node
 
     def shortest_path(self):
-        """ Extracts shortest path between start and end nodes """
+        """ Extracts shortest path between start and end nodes using Dijkstra's algorithm """
 
         json = self.json
 
@@ -105,7 +104,7 @@ class Networker:
                 start_r, start_c = elevation.index(point_start.x, point_start.y)
                 end_r, end_c = elevation.index(point_end.x, point_end.y)
                 d_ele = heights[int(end_r), int(end_c)] - heights[int(start_r), int(start_c)]
-                if d_ele > 0:  # Determines link ascent/descent
+                if d_ele > 0:  # Weight the link ascent/descent
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start = point_end
             time = elevation_time + length / speed
@@ -118,7 +117,7 @@ class Networker:
                 start_r, start_c = elevation.index(point_start_reversed.x, point_start_reversed.y)
                 end_r, end_c = elevation.index(point_end.x, point_end.y)
                 d_ele = heights[int(end_r), int(end_c)] - heights[int(start_r), int(start_c)]
-                if d_ele > 0:
+                if d_ele > 0: # Weight the link ascent/descent
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start_reversed = point_end
             time = elevation_time + length / speed

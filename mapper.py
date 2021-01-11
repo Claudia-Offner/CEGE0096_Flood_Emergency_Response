@@ -3,7 +3,6 @@
 # Import packages here
 import os
 import rasterio
-from rasterio.plot import show
 import rasterio.crs
 import rasterio.transform
 from cartopy import crs
@@ -64,9 +63,6 @@ class Mapper:
         fast_path.plot(ax=ax, edgecolor='red', linewidth=0.5, zorder=2, label='Fastest path')  # fastest path
 
         # Plot features
-        plt.title('Flood Emergency Planning Map', fontsize=8)
-        plt.legend(loc='best', fontsize=4, bbox_to_anchor=(0.75, -0.02), ncol=2)
-        plt.axis('off')
         # Scale
         fontprops = fm.FontProperties(size=8)
         scalebar = AnchoredSizeBar(ax.transData, 2000, '1 km', 'lower left', pad=0.15, color='black',
@@ -78,9 +74,11 @@ class Mapper:
                     arrowprops=dict(facecolor='black', width=2, headwidth=15),
                     ha='center', va='center', fontsize=8,
                     xycoords=ax.transAxes)
-
-        cx = fig.add_axes([0.91, 0.2, 0.02, 0.6])
+        plt.title('Flood Emergency Planning Map', fontsize=8)
+        plt.legend(loc='best', fontsize=4, bbox_to_anchor=(0.75, -0.02), ncol=2)
+        plt.axis('off')
+        cx = fig.add_axes([0.91, 0.16, 0.02, 0.3])
         cb = plt.colorbar(img, cax=cx)
-        cb.ax.tick_params(labelsize=3)
+        cb.ax.tick_params(labelsize=4)
 
         return plt.show()

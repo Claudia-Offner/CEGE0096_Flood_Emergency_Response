@@ -1,8 +1,7 @@
-# File for developing OOP for network analysis
+# File for developing OOP for network analysis.
 
 # Import packages here
 import geopandas as gpd
-import rasterio
 from shapely.geometry import Point, Polygon, MultiPolygon, LineString
 from shapely.geometry import Point
 import networkx as nx
@@ -52,8 +51,8 @@ class Networker:
         end_node = [loc2_fid, loc2_coords]
         return start_node, end_node
 
-    def dijkstra_path(self, start_node, end_node):
-        """ Extracts shortest path between start and end nodes """
+    def shortest_path(self):
+        """ Extracts shortest path between start and end nodes using Dijkstra's algorithm """
 
         json = self.json
 
@@ -67,7 +66,7 @@ class Networker:
             g.add_edge(start, end, fid=fid, weight=weight)
 
         # Extract path
-        path = nx.dijkstra_path(g, source=start_node, target=end_node, weight='weight')
+        path = nx.dijkstra_path(g, source=self.start, target=self.end, weight='weight')
 
         # Parse path to a GeoDataFrame
         links = []
@@ -82,55 +81,57 @@ class Networker:
 
         return shortest_path_gpd
 
-    def naismiths_path(self, elevation, start_node, end_node):
-        """ Extracts naismiths path between start and end nodes """
-        ### Needs more comments #####
+    def fastest_path(self, elevation):
+        """ Extracts fastest path between start and end nodes using Naismiths algorithm """
 
-        heights = elevation.read(1)
-        spd = float(5000 / 60)
+        heights = elevation.read(1)  # load elevation as an array
+        speed = float(5000 / 60)  # set speed to 5km a minute
         road_links = self.json
 
         # Create Graph
-        Graph = nx.Graph()
-        for l in road_links:
+        g = nx.Graph()
+        for link in road_links:
+            start = road_links[link]['start']
+            end = road_links[link]['end']
+            coords = road_links[link]['coords']
+            length = road_links[link]['length']
             elevation_time = 0
-            full_coords = road_links[l]['coords']
 
-            # Forward
-            point_start = Point(tuple(road_links[l]['coords'][0]))
-            for p in full_coords:
+            # Forward direction of link
+            point_start = Point(tuple(coords[0]))
+            for p in coords:
                 point_end = Point(tuple(p))
-                start_r, start_l = elevation.index(point_start.x, point_start.y)
-                end_r, end_l = elevation.index(point_end.x, point_end.y)
-                d_ele = heights[int(end_r), int(end_l)] - heights[int(start_r), int(start_l)]
-                if d_ele > 0:
+                start_r, start_c = elevation.index(point_start.x, point_start.y)
+                end_r, end_c = elevation.index(point_end.x, point_end.y)
+                d_ele = heights[int(end_r), int(end_c)] - heights[int(start_r), int(start_c)]
+                if d_ele > 0:  # Adjust the time if the point ascends
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start = point_end
-            time = elevation_time + road_links[l]['length'] / spd
-            Graph.add_edge(road_links[l]['start'], road_links[l]['end'], fid=l, weight=time)
+            time = elevation_time + length / speed
+            g.add_edge(start, end, fid=link, weight=time)
 
-            # Reversed
-            point_start_reversed = Point(tuple(road_links[l]['coords'][-1]))
-            for p in reversed(full_coords):
+            # Reversed direction of link
+            point_start_reversed = Point(tuple(coords[-1]))
+            for p in reversed(coords):
                 point_end = Point(tuple(p))
-                start_r, start_l = elevation.index(point_start_reversed.x, point_start_reversed.y)
-                end_r, end_l = elevation.index(point_end.x, point_end.y)
-                d_ele = heights[int(end_r), int(end_l)] - heights[int(start_r), int(start_l)]
-                if d_ele > 0:
+                start_r, start_c = elevation.index(point_start_reversed.x, point_start_reversed.y)
+                end_r, end_c = elevation.index(point_end.x, point_end.y)
+                d_ele = heights[int(end_r), int(end_c)] - heights[int(start_r), int(start_c)]
+                if d_ele > 0: # Adjust the time if the point ascends
                     elevation_time = float(d_ele / 10) + elevation_time
                 point_start_reversed = point_end
-            time = elevation_time + road_links[l]['length'] / spd
-            Graph.add_edge(road_links[l]['start'], road_links[l]['end'], fid=l, weight=time)
+            time = elevation_time + length / speed
+            g.add_edge(start, end, fid=link, weight=time)
 
         # Extract path
-        path = nx.dijkstra_path(Graph, start_node, end_node, weight="weight")
+        path = nx.dijkstra_path(g, source=self.start, target=self.end, weight='weight')
 
         # Parse path to a GeoDataFrame
         links = []
         geom = []
         first_node = path[0]
         for node in path[1:]:
-            link_fid = Graph.edges[first_node, node]['fid']
+            link_fid = g.edges[first_node, node]['fid']
             links.append(link_fid)
             geom.append(LineString(road_links[link_fid]['coords']))
             first_node = node
